@@ -1,4 +1,6 @@
 # packetlistener
+[![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Release](https://jitpack.io/v/eu.miopowered/packetlistener.svg?style=flat-square)](https://jitpack.io/#eu.miopowered/packetlistener)
 
 Packet listener for modifiy readed and sented packets
 
