@@ -10,8 +10,8 @@ import java.util.Objects;
 
 public class PacketHandler {
 
-    private static final String PACKET_ENCODER = "furniture-encoder";
-    private static final String PACKET_DECODER = "furniture-decoder";
+    private static final String PACKET_ENCODER = "packetlistener-encoder";
+    private static final String PACKET_DECODER = "packetlistener-decoder";
 
     public static void listen(PacketListener handler) {
         ChannelPipeline pipeline = handler.player().channel().pipeline();
