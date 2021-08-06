@@ -1,9 +1,9 @@
 package eu.miopowered.packetlistener;
 
 import eu.miopowered.packetlistener.context.PacketContext;
-import eu.miopowered.packetlistener.filter.PacketFilter;
 import eu.miopowered.packetlistener.entity.PacketPlayer;
 import eu.miopowered.packetlistener.entity.WrappedPacket;
+import eu.miopowered.packetlistener.filter.PacketFilter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,8 +13,8 @@ public interface PacketListener {
         return new PacketListenerImpl(player);
     }
 
-    static PacketCoordinator register(JavaPlugin javaPlugin) {
-        return new PacketCoordinator(javaPlugin);
+    static void register(JavaPlugin javaPlugin) {
+        new PacketCoordinator(javaPlugin);
     }
 
     PacketPlayer player();
