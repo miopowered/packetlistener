@@ -17,7 +17,7 @@ Packet listener for modifiy readed and sented packets
 <dependency>
     <groupId>eu.miopowered</groupId>
     <artifactId>packetlistener</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
 </dependency>
 <!-- You should add joor, if you want to access joor in your ide to modify packets without direct reflection -->
 <dependency>
@@ -35,7 +35,7 @@ repositories {
 }
 		
 dependencies {
-  implementation 'eu.miopowered:packetlistener:1.0'
+  implementation 'eu.miopowered:packetlistener:2.0'
   
   // You should add joor, if you want to access joor in your ide to modify packets without direct reflection
   implementation 'org.jooq:joor-java-8:0.9.13'
