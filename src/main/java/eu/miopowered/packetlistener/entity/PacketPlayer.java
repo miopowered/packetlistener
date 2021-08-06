@@ -77,7 +77,7 @@ public class PacketPlayer {
                         fadeInTime,
                         showTime,
                         fadeOutTime
-                ));
+                ).get());
     }
 
     private String nmsClassName(String className) {
