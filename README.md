@@ -92,6 +92,19 @@ Example
 
 As you see, the joor reflection library is added and you can modifiy the packet via reflect method.
 
+### Player packet actions
+
+You can perform various actions like actionbar and titles with this library
+
+```java
+PacketPlayer packetPlayer = PacketPlayer.of(player);
+
+packetPlayer.sendFullTitle(String title, String subtitle, int fadeInTime, int showTime, int fadeOutTime)
+packetPlayer.sendActionbar(String text)
+```
+
+Everything should be version independent because of reflection.
+
 ## License
 
 MIT
