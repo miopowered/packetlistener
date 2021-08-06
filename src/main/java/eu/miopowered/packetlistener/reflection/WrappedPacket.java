@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.experimental.Accessors;
+import org.joor.Reflect;
 
 @Getter
 @Accessors(fluent = true)
@@ -17,6 +18,7 @@ public class WrappedPacket {
     }
 
     private Object packet;
+    private Reflect reflect;
 
     private PacketState state;
     private PacketType type;
@@ -24,6 +26,7 @@ public class WrappedPacket {
 
     public WrappedPacket(Object packet) {
         this.packet = packet;
+        this.reflect = Reflect.on(this.packet);
 
         String[] parts = this.packetName().split("(?=[A-Z])", 4);
         this.state = PacketState.valueOf(parts[1].toUpperCase());
