@@ -2,13 +2,13 @@ package eu.miopowered.packetlistener;
 
 import eu.miopowered.packetlistener.netty.PacketDecoder;
 import eu.miopowered.packetlistener.netty.PacketEncoder;
-import eu.miopowered.packetlistener.reflection.PacketPlayer;
+import eu.miopowered.packetlistener.entity.PacketPlayer;
 import io.netty.channel.ChannelPipeline;
 import org.bukkit.entity.Player;
 
 import java.util.Objects;
 
-public class PacketHandler {
+public class PacketTarget {
 
     private static final String PACKET_ENCODER = "packetlistener-encoder";
     private static final String PACKET_DECODER = "packetlistener-decoder";

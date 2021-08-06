@@ -1,13 +1,12 @@
 package eu.miopowered.packetlistener.netty;
 
 import eu.miopowered.packetlistener.PacketListener;
-import eu.miopowered.packetlistener.reflection.WrappedPacket;
+import eu.miopowered.packetlistener.entity.WrappedPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 @AllArgsConstructor
 public class PacketEncoder extends MessageToMessageEncoder<Object> {
@@ -19,15 +18,16 @@ public class PacketEncoder extends MessageToMessageEncoder<Object> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, Object packet, List<Object> list)
             throws Exception {
-        list.add(packet);
+
         String packetName = packet.getClass().getSimpleName().toLowerCase();
-        if (!packetName.matches(VALIDATE_PACKET)) {
+
+        WrappedPacket wrappedPacket = WrappedPacket.from(packet);
+        if (packetName.matches(VALIDATE_PACKET)
+                && this.packetListener.validate(wrappedPacket)
+                && !this.packetListener.sent().handle(channelHandlerContext, wrappedPacket)) {
             return;
         }
 
-        WrappedPacket wrappedPacket = WrappedPacket.from(packet);
-        if (this.packetListener.validate(wrappedPacket)) {
-            this.packetListener.sent().handle(channelHandlerContext, wrappedPacket);
-        }
+        list.add(packet);
     }
 }

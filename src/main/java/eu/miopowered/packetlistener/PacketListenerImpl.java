@@ -1,10 +1,9 @@
 package eu.miopowered.packetlistener;
 
-import eu.miopowered.packetlistener.context.PacketReceive;
-import eu.miopowered.packetlistener.context.PacketSent;
+import eu.miopowered.packetlistener.context.PacketContext;
 import eu.miopowered.packetlistener.filter.PacketFilter;
-import eu.miopowered.packetlistener.reflection.PacketPlayer;
-import eu.miopowered.packetlistener.reflection.WrappedPacket;
+import eu.miopowered.packetlistener.entity.PacketPlayer;
+import eu.miopowered.packetlistener.entity.WrappedPacket;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -19,9 +18,9 @@ import java.util.List;
 class PacketListenerImpl implements PacketListener {
 
     @Setter
-    private PacketReceive receive;
+    private PacketContext receive;
     @Setter
-    private PacketSent sent;
+    private PacketContext sent;
 
     private PacketPlayer player;
     private List<PacketFilter> filters;

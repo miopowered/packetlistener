@@ -1,6 +1,6 @@
 package eu.miopowered.packetlistener.filter;
 
-import eu.miopowered.packetlistener.reflection.WrappedPacket;
+import eu.miopowered.packetlistener.entity.WrappedPacket;
 
 public enum PacketState implements PacketFilter {
 

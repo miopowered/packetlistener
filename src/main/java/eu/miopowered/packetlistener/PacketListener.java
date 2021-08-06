@@ -1,11 +1,11 @@
 package eu.miopowered.packetlistener;
 
-import eu.miopowered.packetlistener.context.PacketReceive;
-import eu.miopowered.packetlistener.context.PacketSent;
+import eu.miopowered.packetlistener.context.PacketContext;
+import eu.miopowered.packetlistener.entity.PacketPlayer;
+import eu.miopowered.packetlistener.entity.WrappedPacket;
 import eu.miopowered.packetlistener.filter.PacketFilter;
-import eu.miopowered.packetlistener.reflection.PacketPlayer;
-import eu.miopowered.packetlistener.reflection.WrappedPacket;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public interface PacketListener {
 
@@ -13,17 +13,21 @@ public interface PacketListener {
         return new PacketListenerImpl(player);
     }
 
+    static void register(JavaPlugin javaPlugin) {
+        new PacketCoordinator(javaPlugin);
+    }
+
     PacketPlayer player();
 
-    PacketReceive receive();
+    PacketContext receive();
 
-    PacketSent sent();
+    PacketContext sent();
 
     PacketListener filter(PacketFilter... filter);
 
-    PacketListener receive(PacketReceive receive);
+    PacketListener receive(PacketContext receive);
 
-    PacketListener sent(PacketSent sent);
+    PacketListener sent(PacketContext sent);
 
     boolean validate(WrappedPacket packet);
 
