@@ -1,8 +1,6 @@
 package eu.miopowered.packetlistener;
 
 import eu.miopowered.packetlistener.context.PacketContext;
-import eu.miopowered.packetlistener.context.PacketReceive;
-import eu.miopowered.packetlistener.context.PacketSent;
 import eu.miopowered.packetlistener.filter.PacketFilter;
 import eu.miopowered.packetlistener.entity.PacketPlayer;
 import eu.miopowered.packetlistener.entity.WrappedPacket;
@@ -21,9 +19,9 @@ public interface PacketListener {
 
     PacketPlayer player();
 
-    PacketReceive receive();
+    PacketContext receive();
 
-    PacketSent sent();
+    PacketContext sent();
 
     PacketListener filter(PacketFilter... filter);
 
