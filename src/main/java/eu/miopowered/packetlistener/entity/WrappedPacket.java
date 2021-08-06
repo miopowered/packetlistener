@@ -1,4 +1,4 @@
-package eu.miopowered.packetlistener.reflection;
+package eu.miopowered.packetlistener.entity;
 
 import eu.miopowered.packetlistener.filter.PacketState;
 import eu.miopowered.packetlistener.filter.PacketType;
