@@ -19,6 +19,8 @@ public class PacketCoordinator implements Listener {
 
     PacketCoordinator(JavaPlugin plugin) {
         this.plugin = plugin;
+
+        Bukkit.getPluginManager().registerEvents(this, this.plugin);
     }
 
     private void listen(Player player) {
