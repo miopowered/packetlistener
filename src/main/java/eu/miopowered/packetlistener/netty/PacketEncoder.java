@@ -20,15 +20,14 @@ public class PacketEncoder extends MessageToMessageEncoder<Object> {
             throws Exception {
 
         String packetName = packet.getClass().getSimpleName().toLowerCase();
-        
-        try{
-        WrappedPacket wrappedPacket = WrappedPacket.from(packet);
-        if (packetName.matches(VALIDATE_PACKET)
-                && this.packetListener.validate(wrappedPacket)
-                && !this.packetListener.sent().handle(channelHandlerContext, wrappedPacket)) {
+        if(!packetName.matches(VALIDATE_PACKET)) {
+            list.add(packet);
             return;
         }
-         }catch(Exception e) {
+        WrappedPacket wrappedPacket = WrappedPacket.from(packet);
+        if (this.packetListener.validate(wrappedPacket)
+                && !this.packetListener.sent().handle(channelHandlerContext, wrappedPacket)) {
+            return;
         }
 
         list.add(packet);
